@@ -1,0 +1,202 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+/* COLOR PALETTE */
+*:root {
+    /*CLOCK*/
+    --color-black: #000505;
+    --color-black-light: #20211B;
+    --color-characters-on: #55f200;
+    --color-characters-off: #151716;
+    --color-screen-background: #202322;
+    --color-clock-border: #757877;
+    --color-clock-body: #BEBEBE;
+    --color-shadow: rgba(0, 0, 0, 0.418);
+    
+    --color-footer-text: #cdcdcd;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1be35f;
+}
+
+/*CLOCK BORDER AND MAIN ELEMENT*/
+.countdown-clock {
+    width: 360px;
+    height: 150px;
+    margin: 100px auto 0 auto;
+    border-radius: 15px;
+    background-color: var(--color-clock-border);
+    position: relative;
+    cursor: default;
+}
+
+/*CLOCK BODY*/
+.countdown-clock::before {
+    content: "";
+    width: 130px;
+    height: 150px;
+    background-color: var(--color-clock-body);
+    position: absolute;
+    right: -80px;
+    z-index: -1;
+    border-radius: 15px;
+}
+
+/*CLOCK'S SCREEN*/
+.countdown-clock::after {
+    content: "";
+    width: 344px;
+    height: 134px;
+    background-color: var(--color-screen-background);
+    position: absolute;
+    border-radius: 10px;
+    left: 8px;
+    top: 8px;
+}
+
+/*SNOOZE GROUP (to apply effects)*/
+.snooze-button-group {
+    width: auto;
+    height: 50px;
+    padding-top: 10px;
+    transition: .1s;
+    z-index: -1;
+    position: absolute;
+    top: -25px;
+    left: 100px;
+    display: flex;
+}
+
+.snooze-button-group:active {
+    transform: translateY(8px);
+}
+
+/*SNOOZE BUTTON*/
+.snooze-button {
+    height: 30px;
+    width: 150px;
+    border-radius: 8px;
+    background-color: var(--color-black-light);
+    z-index: -1;
+    padding-left: 7px;
+    cursor: pointer;
+}
+
+/*SNOOZE BUTTON SIDE*/
+.snooze-button-side {
+    content: "";
+    height: 30px;
+    width: 50px;
+    border-radius: 8px 8px 0 0 ;
+    background-color: var(--color-black);
+    z-index: -2;
+    margin-left: -20px;
+    cursor: pointer;
+}
+
+.screen-content {
+    font-family: 'Digital', sans-serif;
+    width: 330px;
+    height: 120px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    user-select: none;
+}
+
+.main-screen {
+    position: relative;
+}
+
+/*OFF CHARACTERS*/
+.time-off {
+    color: var(--color-characters-off);
+    font-size: 100px;
+}
+
+/*ON CHARACTERS*/
+.time-on {
+    position: absolute;
+    top: 0;
+    font-size: 100px;
+    color: var(--color-characters-on);
+}
+
+.colon {
+    animation: colon 2s steps(1) infinite;
+}
+
+/*AM PM ALARM*/
+.secondary-elements {
+    color: var(--color-characters-off);
+    font-size: 23px;
+    text-align: center;
+    list-style-type: none;
+}
+
+.secondary-on {
+    color: var(--color-characters-on);
+}
+
+.alarm {
+    font-size: 18px;
+}
+
+.shadow {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-40%);
+    bottom: -50px;
+    width: 380px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--color-shadow);
+}
+
+/* SOCIAL */
+.social {
+    width: 250px;
+    margin: 100px auto 0 auto;
+    transform: translateX(25px);
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.social img {
+    width: 50px;
+}
+
+/*ANIMATION*/
+@keyframes colon {
+    0% {
+        color: var(--color-characters-on);
+    }
+
+    50% {
+        color: var(--color-characters-off);
+    }
+}
+
+@font-face {
+    font-family: 'Digital';
+    src: url('https://lucasferreyra.co/projects/css-clock/fonts/digital-7_mono-webfont.woff2') format('woff2'),
+         url('https://lucasferreyra.co/projects/css-clock/fonts/digital-7_mono-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
